@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Anak RPL 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <h3>Hasil Pencarian: </h3>
+    <form action="/cari-data-absensi-rpl3" method="get">
+        <div class="row mb-3">
+            <label for="absen" class="col-sm-2 col-form-label">Nama: </label>
+            <div class="col-sm-10">
+              <input type="text" name="absen" class="form-control" id="inputAbsen">
+            </div>
+        </div>
+        <input type="submit" class="btn btn-danger ml-5" value="Cari Data">
+        <button class="btn btn-danger">
+          <a href="http://localhost:8080/data-absensi-rpl3" style="text-decoration: none; color: white;">Homepage</a>
+        </button>
+    </form>
+
+    <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Kelas</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Waktu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (let rpl3l of rpl3.sort((a,b)=>a.absen-b.absen)) { %>
+            <tr>
+              <th scope="row"><%= rpl3l.absen %></th>
+              <th scope="row"><%= rpl3l.nama %></th>
+              <th scope="row"><%= rpl3l.created_ad %></th>
+            </tr>
+             <% } %>
+          </tbody>
+        </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
